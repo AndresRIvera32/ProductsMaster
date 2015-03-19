@@ -9,4 +9,4 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: fast-anchorage-4215
+      appname: evening-bastion-5152

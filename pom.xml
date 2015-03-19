@@ -4,11 +4,11 @@
 
 
     <groupId>edu.eci.cosw</groupId>
-    <artifactId>SuperStuff</artifactId>
+    <artifactId>ProductsMaster</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>SuperStuff</name>
+    <name>ProductsMaster</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

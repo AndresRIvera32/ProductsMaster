@@ -18,11 +18,11 @@
     <jdbc:embedded-database id="dataSource" type="H2">
     </jdbc:embedded-database>
     
-    <context:component-scan base-package="com.cosw.superstuff.logica"/>
+    <context:component-scan base-package="com.cosw.productsmaster.logica"/>
     
-    <context:component-scan base-package="com.cosw.superstuff.rep"/>
+    <context:component-scan base-package="com.cosw.productsmaster.rep"/>
     
-    <jpa:repositories base-package="com.cosw.superstuff.rep"/>
+    <jpa:repositories base-package="com.cosw.productsmaster.rep"/>
  
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="true"/>
@@ -33,7 +33,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <!-- spring based scanning for entity classes-->
-        <property name="packagesToScan" value="com.cosw.superstuff.persistencia"/>
+        <property name="packagesToScan" value="com.cosw.productsmaster.persistencia"/>
         <!-- Set JPA properties -->
         <property name="jpaProperties">
           <props>

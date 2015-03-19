@@ -13,11 +13,11 @@
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 ">
 
-    <context:component-scan base-package="com.cosw.superstuff.logica"/>
+    <context:component-scan base-package="com.cosw.productsmaster.logica"/>
     
-    <context:component-scan base-package="com.cosw.superstuff.rep"/>
+    <context:component-scan base-package="com.cosw.productsmaster.rep"/>
     
-    <jpa:repositories base-package="com.cosw.superstuff.rep"/>
+    <jpa:repositories base-package="com.cosw.productsmaster.rep"/>
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -36,7 +36,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
         <!-- spring based scanning for entity classes-->
-        <property name="packagesToScan" value="com.cosw.superstuff.persistencia"/>
+        <property name="packagesToScan" value="com.cosw.productsmaster.persistencia"/>
     </bean>
  
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>

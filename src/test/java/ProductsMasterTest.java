@@ -106,14 +106,34 @@ public class ProductsMasterTest {
     
     @Before
     public void setUp() {
-        
+        repositorioDetalleCompra.deleteAll();
+        repositorioProductos.deleteAll();
+        repositorioProveedores.deleteAll();
+        repositorioCategorias.deleteAll();
+        repositorioDescuentos.deleteAll();
+        repositorioEstadoEnvios.deleteAll();
+        repositorioEnvios.deleteAll();
+        repositorioPedidos.deleteAll();
+        repositorioPaises.deleteAll();
+        repositorioLugares.deleteAll(); 
+       
+       
+     
+     
+    }
+    
+    
+    @After
+    public void tearDown() { 
+    }
+    public void InsertarDatos(){
         Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         Set<Lugar> newPlaces = new LinkedHashSet<>();
         Lugar L1=new Lugar(p1, "Bogota", "Cedritos");
         newPlaces.add(L1);
-        newPlaces.add(new Lugar(p1,"Bogota","Las Orquideas"));
-        newPlaces.add(new Lugar(p1,"Bogota","Mazuren"));
-        newPlaces.add(new Lugar(p1,"Bogota","Verbenal"));
+        newPlaces.add(new Lugar(p1,"Bogotas","Las Orquideas"));
+        newPlaces.add(new Lugar(p1,"BogotÃ¡","Mazuren"));
+        newPlaces.add(new Lugar(p1,"Bogotai","Verbenal"));
 
         p1.setLugares(newPlaces);
         repositorioPaises.save(p1);
@@ -139,26 +159,7 @@ public class ProductsMasterTest {
        
        repositorioProductos.save(new Producto(5, c1, d1, "Melon", pr2, 3000));
        repositorioProductos.save(new Producto(6, c1, d1, "Papaya", pr2, 5000));
-       
-     
-     
     }
-    
-    @After
-    public void tearDown() {
-        repositorioDetalleCompra.deleteAll();
-        repositorioProductos.deleteAll();
-        repositorioProveedores.deleteAll();
-        repositorioCategorias.deleteAll();
-        repositorioDescuentos.deleteAll();
-        repositorioEstadoEnvios.deleteAll();
-        repositorioEnvios.deleteAll();
-        repositorioPedidos.deleteAll();
-        repositorioPaises.deleteAll();
-        repositorioLugares.deleteAll(); 
-
-    }
-    
     /**
      * @author
      */
@@ -333,7 +334,7 @@ public class ProductsMasterTest {
     /*
     @Test
     public void registrarNuevoEnvio() {
-        /*
+        
         Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         Pais p2 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         
@@ -404,16 +405,18 @@ public class ProductsMasterTest {
         
         assertEquals("El numero de pedidos registrados fue de 2", 2, envio.getPedidos().size());
         
-    }*/
+    }
     
     /**
      * @author
      */
     
+    /*---------------------------------------------------------------------*/
+    
     @Test
     public void cargarProductosPorProveedorTest(){
         
-         
+         InsertarDatos();
         
         List<Producto> producto = superStuff.cargarProductosPorProveedor(1);
        assertEquals("el numero de productos del proveedor con id 1 es de 4", 4, producto.size());
@@ -424,29 +427,33 @@ public class ProductsMasterTest {
     
     @Test
     public void ConsultarProductosPorCategoria(){
-        
+        InsertarDatos();
         List<Producto> p=superStuff.cargarProductosPorCategoria(2);
         assertEquals("El numero de productos de la categoria de licores es de 4" , 4, p.size());
 
     }
+    
     @Test
     public void ConsultarCategorias(){
+        InsertarDatos();
         List<Categoria> p=superStuff.cargarCategorias();
         assertEquals("El numero de Categorias es de 2" , 2, p.size());
 
     }
-    
+   
     @Test
     public void ConsultarTodosLosProductos(){
+        InsertarDatos();
         List<Producto> p=superStuff.cargarTodosLosProductos();
         assertEquals("El numero de productos es de 6" , 6, p.size());
 
     }
+   
     
-    
-    
+   
     @Test
     public void ActualizarEstadoEnvio(){
+        InsertarDatos();
         Envio e =new Envio(new Date(System.currentTimeMillis()));
         repositorioEnvios.save(e);
         List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
@@ -462,16 +469,26 @@ public class ProductsMasterTest {
     
     @Test
     public void VerifPedidoTendero(){
-        /*
-        List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
-        Tienda td1=new Tienda(42, lugares.get(1), "cra 47 163b-32");
-        repositorioTiendas.save(td1);
         
-        Asignacion de tienda a tendero
+        /*
+        Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
+        Pais p2 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
+        
+        Set<Lugar> newPlaces = new LinkedHashSet<>();
+        newPlaces.add(new Lugar(p1, "BogotÃ¡", "Cedritos"));
+        newPlaces.add(new Lugar(p1,"Bogota","Las Orquideas"));
+        
+        p1.setLugares(newPlaces);
+        repositorioPaises.save(p1);
+        repositorioPaises.save(p2);
+        List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
+        System.out.println(lugares.get(0).getCiudad());
+        Tienda td=new Tienda(1, lugares.get(0), "cra 47 163b-32");
+        repositorioTiendas.save(td);
+        
         Set<Tienda> s=new LinkedHashSet<>();
-        s.add(td);
-        Tendero tend=new Tendero(2085, "Julio Serrano"); 
-        tend.setTiendas(s);
+        s.add(new Tienda(1, lugares.get(0), "cra 47 163b-32"));
+        Tendero tend=new Tendero(2085, "Julio Serrano",s); 
         repositorioTenderos.save(tend);
         
         /*Asignacion de tienda a tendero

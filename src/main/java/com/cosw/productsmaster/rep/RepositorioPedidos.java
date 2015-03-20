@@ -5,9 +5,16 @@
  */
 package com.cosw.productsmaster.rep;
 
+
+import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Pedido;
+import com.cosw.productsmaster.persistencia.Tienda;
 import java.io.Serializable;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -15,4 +22,7 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface RepositorioPedidos extends CrudRepository<Pedido, Integer>{
     
+    @Query("SELECT f FROM Factura f  where f.pedido = :pedido") 
+    public Factura ConsultarFacturaDePedido(@Param("pedido") Pedido pedido); 
+
 }

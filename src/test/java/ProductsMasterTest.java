@@ -17,6 +17,7 @@ import com.cosw.productsmaster.persistencia.Pedido;
 import com.cosw.productsmaster.persistencia.Producto;
 import com.cosw.productsmaster.persistencia.Proveedor;
 import com.cosw.productsmaster.persistencia.Tendero;
+import com.cosw.productsmaster.persistencia.Tienda;
 import com.cosw.productsmaster.rep.RepositorioCategorias;
 import com.cosw.productsmaster.rep.RepositorioDescuentos;
 import com.cosw.productsmaster.rep.RepositorioDetalleCompra;
@@ -28,6 +29,7 @@ import com.cosw.productsmaster.rep.RepositorioPedidos;
 import com.cosw.productsmaster.rep.RepositorioProductos;
 import com.cosw.productsmaster.rep.RepositorioProveedores;
 import com.cosw.productsmaster.rep.RepositorioTenderos;
+import com.cosw.productsmaster.rep.RepositorioTiendas;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -92,6 +94,9 @@ public class ProductsMasterTest {
     @Autowired
     private RepositorioTenderos repositorioTenderos;
     
+    @Autowired
+    private RepositorioTiendas repositorioTiendas;
+    
     //private static boolean DATOSPREPARADOS = false;
     
     
@@ -101,11 +106,15 @@ public class ProductsMasterTest {
     
     @Before
     public void setUp() {
+        
         Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         Set<Lugar> newPlaces = new LinkedHashSet<>();
-        Lugar L1=new Lugar(p1, "BogotÃ¡", "Cedritos");
+        Lugar L1=new Lugar(p1, "Bogota", "Cedritos");
         newPlaces.add(L1);
         newPlaces.add(new Lugar(p1,"Bogota","Las Orquideas"));
+        newPlaces.add(new Lugar(p1,"Bogota","Mazuren"));
+        newPlaces.add(new Lugar(p1,"Bogota","Verbenal"));
+
         p1.setLugares(newPlaces);
         repositorioPaises.save(p1);
         List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
@@ -132,6 +141,7 @@ public class ProductsMasterTest {
        repositorioProductos.save(new Producto(6, c1, d1, "Papaya", pr2, 5000));
        
      
+     
     }
     
     @After
@@ -152,6 +162,7 @@ public class ProductsMasterTest {
     /**
      * @author
      */
+    /*
     @Test
     public void crearNuevoProveedorTest(){
         /*
@@ -177,27 +188,14 @@ public class ProductsMasterTest {
             
         List<Proveedor> proveedores = superStuff.cargarTodosLosProveedores();
         assertEquals("La clase logica ha cargado 6 proveedores?", 6, proveedores.size());
-        */
-    }
-    
-    /**
-     * @author
-     */
-    @Test
-    public void cargarProductosPorProveedorTest(){
-        
-         
-        
-        List<Producto> producto = superStuff.cargarProductosPorProveedor(1);
-       assertEquals("el numero de productos del proveedor con id 1 es de 4", 4, producto.size());
-
-        //("Algun producto tiene un proveedor disntinto al solicitado", prueba);
         
     }
     
+    */
     /**
      * @author
      */
+    /*
     @Test
     public void crearNuevoTenderoTest(){
         /*
@@ -210,12 +208,13 @@ public class ProductsMasterTest {
         repositorioTenderos.save(new Tendero(7, "Moe Szyslak"));
         List<Tendero> tenderos = (List<Tendero>)repositorioTenderos.findAll();
         assertEquals("Hay 7 tenderos?", 7, tenderos.size());
-        */
+        
     }
-    
+    */
     /**
      * @author
      */
+    /*
     @Test
     public void registrarProductoTest(){  
         /*
@@ -255,15 +254,16 @@ public class ProductsMasterTest {
         assertNotNull("El descuento del producto no debe ser nulo", producto.getDescuentos());
         assertNotNull("El proveedor del producto no debe ser nulo", producto.getProveedores());
         assertEquals("El precio del producto es 1000000?", 1000000, producto.getPrecioLista());
-        */
+        
     }
-    
+    */
     /**
      * 
      */
+    /*
     @Test
     public void registrarPedido() {
-        /*
+        
         Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         Pais p2 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
         
@@ -324,12 +324,13 @@ public class ProductsMasterTest {
         List<Pedido> myList = IteratorUtils.toList(myIterator);
                 
         assertEquals("El numero de pedidos registrados fue de 2", 2, myList.size());
-        */
+        
     }
-    
+    */
     /**
      * 
      */
+    /*
     @Test
     public void registrarNuevoEnvio() {
         /*
@@ -402,8 +403,25 @@ public class ProductsMasterTest {
         Envio envio = repositorioEnvios.findOne(i);
         
         assertEquals("El numero de pedidos registrados fue de 2", 2, envio.getPedidos().size());
-        */
+        
+    }*/
+    
+    /**
+     * @author
+     */
+    
+    @Test
+    public void cargarProductosPorProveedorTest(){
+        
+         
+        
+        List<Producto> producto = superStuff.cargarProductosPorProveedor(1);
+       assertEquals("el numero de productos del proveedor con id 1 es de 4", 4, producto.size());
+
+        //("Algun producto tiene un proveedor disntinto al solicitado", prueba);
+        
     }
+    
     @Test
     public void ConsultarProductosPorCategoria(){
         
@@ -439,7 +457,33 @@ public class ProductsMasterTest {
         List<EstadoEnvio> est=(List<EstadoEnvio>)repositorioEstadoEnvios.findAll();
         assertEquals("El estado actual del envio 1 es en camino" ,"En CAMINO",est.get(0).getDescripcion() );
     
-                }
+     }
+   
+    
+    @Test
+    public void VerifPedidoTendero(){
+        /*
+        List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
+        Tienda td1=new Tienda(42, lugares.get(1), "cra 47 163b-32");
+        repositorioTiendas.save(td1);
+        
+        Asignacion de tienda a tendero
+        Set<Tienda> s=new LinkedHashSet<>();
+        s.add(td);
+        Tendero tend=new Tendero(2085, "Julio Serrano"); 
+        tend.setTiendas(s);
+        repositorioTenderos.save(tend);
+        
+        /*Asignacion de tienda a tendero
+        Set<Tienda> s1=new LinkedHashSet<>();
+        s1.add(td1);
+        Tendero tend1=new Tendero(2088, "David Salsedo");
+        tend.setTiendas(s1);
+        repositorioTenderos.save(tend1);
+        */
+        
+
+    }
     
     
 

@@ -10,11 +10,13 @@ import com.cosw.productsmaster.persistencia.Descuento;
 import com.cosw.productsmaster.persistencia.DetalleCompra;
 import com.cosw.productsmaster.persistencia.DetalleCompraId;
 import com.cosw.productsmaster.persistencia.Envio;
+import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Lugar;
 import com.cosw.productsmaster.persistencia.Pedido;
 import com.cosw.productsmaster.persistencia.Producto;
 import com.cosw.productsmaster.persistencia.Proveedor;
 import com.cosw.productsmaster.persistencia.Tendero;
+import com.cosw.productsmaster.persistencia.Tienda;
 import com.cosw.productsmaster.rep.RepositorioCategorias;
 import com.cosw.productsmaster.rep.RepositorioDescuentos;
 import com.cosw.productsmaster.rep.RepositorioDetalleCompra;
@@ -24,6 +26,7 @@ import com.cosw.productsmaster.rep.RepositorioPedidos;
 import com.cosw.productsmaster.rep.RepositorioProductos;
 import com.cosw.productsmaster.rep.RepositorioProveedores;
 import com.cosw.productsmaster.rep.RepositorioTenderos;
+import com.cosw.productsmaster.rep.RepositorioTiendas;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -61,6 +64,9 @@ public class ProductsMasterLogica {
     
     @Autowired
     private RepositorioTenderos repositorioTenderos;
+    
+    @Autowired
+    private RepositorioTiendas repositorioTiendas;
     
     @Autowired
     private RepositorioDescuentos repositorioDescuentos;
@@ -252,5 +258,24 @@ public class ProductsMasterLogica {
      */
     public void crearNuevoTendero(Tendero t) {
        repositorioTenderos.save(t);
+    }
+    
+    /**
+     * @author Andres
+     * Consultar si un pedido pertenece a un tendero
+     * @param t Tienda
+     * @param p Pedido
+     * @return boolean
+     */
+    public boolean VerificarPedidoTendero(Tienda t,Pedido p){
+        Factura f=repositorioPedidos.ConsultarFacturaDePedido(p);
+        Tienda t1=repositorioTiendas.findOne(t.getIdTiendas());
+        Set<Factura> facs= t1.getFacturases();
+        for (Factura fac : facs) {
+            if(fac.getIdFacturas()==f.getIdFacturas()){
+                return true;
+            }
+        }
+        return false;
     }
 }

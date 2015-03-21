@@ -60,7 +60,7 @@ public class EstadoEnvio  implements java.io.Serializable {
     public void setIdEstadoEnvios(int idEstadoEnvios) {
         this.idEstadoEnvios = idEstadoEnvios;
     }
-
+    
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="Envio_idEnvio", nullable=false)
     public Envio getEnvios() {

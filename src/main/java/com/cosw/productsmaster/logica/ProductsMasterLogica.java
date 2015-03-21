@@ -22,6 +22,7 @@ import com.cosw.productsmaster.rep.RepositorioDescuentos;
 import com.cosw.productsmaster.rep.RepositorioDetalleCompra;
 import com.cosw.productsmaster.rep.RepositorioEnvios;
 import com.cosw.productsmaster.rep.RepositorioEstadoEnvios;
+import com.cosw.productsmaster.rep.RepositorioFacturas;
 import com.cosw.productsmaster.rep.RepositorioPedidos;
 import com.cosw.productsmaster.rep.RepositorioProductos;
 import com.cosw.productsmaster.rep.RepositorioProveedores;
@@ -67,6 +68,9 @@ public class ProductsMasterLogica {
     
     @Autowired
     private RepositorioTiendas repositorioTiendas;
+    
+    @Autowired
+    private RepositorioFacturas repositorioFacturas;
     
     @Autowired
     private RepositorioDescuentos repositorioDescuentos;
@@ -267,13 +271,9 @@ public class ProductsMasterLogica {
      * @return boolean
      */
     public boolean VerificarPedidoTendero(Tienda t,Pedido p){
-        Factura f=repositorioPedidos.ConsultarFacturaDePedido(p);
-        Tienda t1=repositorioTiendas.findOne(t.getIdTiendas());
-        Set<Factura> facs= t1.getFacturases();
-        for (Factura fac : facs) {
-            if(fac.getIdFacturas()==f.getIdFacturas()){
-                return true;
-            }
+        Factura f=repositorioFacturas.VerificarPedidodeTienda(p, t);
+        if(f!=null){
+            return true;
         }
         return false;
     }

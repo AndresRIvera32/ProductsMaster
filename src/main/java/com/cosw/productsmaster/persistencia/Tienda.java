@@ -69,7 +69,7 @@ public class Tienda  implements java.io.Serializable {
         this.direccion = direccion;
     }
 
-    @OneToMany(fetch=FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     public Set<Factura> getFacturases() {
         return this.facturases;
     }

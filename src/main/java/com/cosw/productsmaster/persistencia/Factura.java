@@ -7,8 +7,10 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -25,6 +27,11 @@ public class Factura  implements java.io.Serializable {
     private int idFacturas;
     private long valor;
     private Pedido pedido;
+    private Tienda tienda;
+
+    
+    
+    
             
     public Factura() {
     }
@@ -33,10 +40,11 @@ public class Factura  implements java.io.Serializable {
        this.idFacturas = idFacturas;
        this.valor = valor;
     }
-    public Factura(int idFacturas, long valor,Pedido p) {
+    public Factura(int idFacturas, long valor,Pedido p,Tienda t) {
        this.idFacturas = idFacturas;
        this.valor = valor;
        this.pedido=p;
+       this.tienda=t;
     }
    
     @Id    
@@ -67,5 +75,15 @@ public class Factura  implements java.io.Serializable {
 
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
+    }
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Tiendas_idTiendas", nullable=false)
+    public Tienda getTienda() {
+        return tienda;
+    }
+
+    public void setTienda(Tienda tienda) {
+        this.tienda = tienda;
     }
 }

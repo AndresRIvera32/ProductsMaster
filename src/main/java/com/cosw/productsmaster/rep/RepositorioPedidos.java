@@ -22,8 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
  * @author HOMERO
  */
 public interface RepositorioPedidos extends CrudRepository<Pedido, Integer>{
-    
-    @Query("SELECT f FROM Factura f  where f.pedido = :pedido") 
-    public Factura ConsultarFacturaDePedido(@Param("pedido") Pedido pedido); 
+     
 
 }

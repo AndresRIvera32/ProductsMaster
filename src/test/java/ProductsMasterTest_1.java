@@ -174,7 +174,7 @@ public class ProductsMasterTest_1 {
         
         List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
         System.out.println(lugares.get(0).getCiudad());
-        Tienda td=new Tienda(1, lugares.get(0), "cra 47 163b-32");
+        Tienda td=new Tienda(41, lugares.get(0), "cra 47 163b-32");
         repositorioTiendas.save(td);
         Tienda td1=new Tienda(2, lugares.get(1), "cra 13 164b-32");
         repositorioTiendas.save(td1);
@@ -206,14 +206,14 @@ public class ProductsMasterTest_1 {
         DetalleCompra det1=new DetalleCompra(id1, p2, 1, 3000);
         repositorioDetalleCompra.save(det1);
         
-        
-        repositorioFacturas.save(new Factura(1, 8, ped));
+        Tienda t=repositorioTiendas.findOne(41);
+        repositorioFacturas.save(new Factura(1, 8, ped,t));
         
         Pedido p=repositorioPedidos.findOne(1);
-        Set<DetalleCompra> d=p.getDetalleCompras();
-        List<DetalleCompra> detalles=(List<DetalleCompra>)repositorioDetalleCompra.findAll();
-        detalles.get(1).getCantidad();
+        Factura f=repositorioFacturas.findOne(1);
         
+        boolean b=superStuff.VerificarPedidoTendero(t, p);
+         assertEquals("la tienda con id=41 corresponde al pedido con id=1", true,b );        
         
         
     }

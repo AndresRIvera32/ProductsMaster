@@ -16,7 +16,9 @@ import javax.persistence.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
@@ -35,7 +37,7 @@ public class ControladorPeticiones {
         this.pm = pm;        
     }
     
-     @RequestMapping("/productos")
+     /*@RequestMapping("/productos")
     public ArrayList<Producto> ProductosJson() {
         ArrayList<Producto> lista = null;
         try {
@@ -44,6 +46,14 @@ public class ControladorPeticiones {
            Logger.getLogger(ControladorPeticiones.class.getName()).log(Level.SEVERE, null, ex);
        }
         return lista;
-    }
+    }*/
+    /*
+    @RequestMapping(value="/Productos",method = RequestMethod.GET)
+     public Producto consped(@PathVariable int id) {
+         if(pm.cargarTodosLosProductos()!=null){
+             return pm.cargarTodosLosProductos();
+         }
+     return null; 
+     }*/
     
 }

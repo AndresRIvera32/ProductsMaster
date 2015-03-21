@@ -33,7 +33,11 @@ public class ControladorPeticiones {
     @Autowired ProductsMasterLogica cl;
     
    
-    
+    /**
+     * Metodo para retornar un producto con un id
+     * @param id
+     * @return un producto
+     */
      @RequestMapping(value="producto/{id}",method = RequestMethod.GET)
      public Producto consprod(@PathVariable int id) {
          if(cl.ConsultaProducto(id)!=null){
@@ -42,6 +46,10 @@ public class ControladorPeticiones {
      return null; 
      }
      
+     /**
+      * Metodo para retornar productos que hay
+      * @return Todos los productos
+      */
      @RequestMapping("/productos")
     public ArrayList<Producto> productosJson() {
         ArrayList<Producto> lista = null;
@@ -53,6 +61,11 @@ public class ControladorPeticiones {
         return lista;
     }
     
+    /**
+     * Metodo para retornar los productos de un proveedor
+     * @param id
+     * @return productos de proveedor
+     */
     @RequestMapping("/ProveedorProd/{id}")
     public ArrayList<Producto> ProveedorProdJson(@PathVariable int id) {
         ArrayList<Producto> lista = null;
@@ -64,6 +77,11 @@ public class ControladorPeticiones {
         return lista;
     }
     
+    /**
+     * Metodo para retonar productos de una categoria
+     * @param id
+     * @return productos de categoria
+     */
     @RequestMapping("/ProdsCategoria/{id}")
     public ArrayList<Producto> ProductosCategoria(@PathVariable int id) {
         ArrayList<Producto> lista = null;
@@ -74,5 +92,8 @@ public class ControladorPeticiones {
        }
         return lista;
     }
+    
+    
+    
     
 }

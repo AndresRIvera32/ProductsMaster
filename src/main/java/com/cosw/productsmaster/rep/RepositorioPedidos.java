@@ -6,10 +6,11 @@
 package com.cosw.productsmaster.rep;
 
 
+
 import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Pedido;
-import com.cosw.productsmaster.persistencia.Tienda;
 import java.io.Serializable;
+import java.util.Set;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

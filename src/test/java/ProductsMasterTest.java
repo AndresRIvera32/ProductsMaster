@@ -49,12 +49,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 /**
  *
  * @author HOMERO
  */
 @RunWith(SpringJUnit4ClassRunner.class)
+@TransactionConfiguration(defaultRollback = true)
 @ContextConfiguration(locations = {"classpath:applicationContextH2.xml"})
 public class ProductsMasterTest {
     
@@ -467,41 +469,6 @@ public class ProductsMasterTest {
      }
    
     
-    @Test
-    public void VerifPedidoTendero(){
-        
-        /*
-        Pais p1 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
-        Pais p2 = new Pais("Colombia", "COL", "ESPAÃ‘OL", Pais.SIHAYCOBERTURA);
-        
-        Set<Lugar> newPlaces = new LinkedHashSet<>();
-        newPlaces.add(new Lugar(p1, "BogotÃ¡", "Cedritos"));
-        newPlaces.add(new Lugar(p1,"Bogota","Las Orquideas"));
-        
-        p1.setLugares(newPlaces);
-        repositorioPaises.save(p1);
-        repositorioPaises.save(p2);
-        List<Lugar> lugares = (List<Lugar>)repositorioLugares.findAll();
-        System.out.println(lugares.get(0).getCiudad());
-        Tienda td=new Tienda(1, lugares.get(0), "cra 47 163b-32");
-        repositorioTiendas.save(td);
-        
-        Set<Tienda> s=new LinkedHashSet<>();
-        s.add(new Tienda(1, lugares.get(0), "cra 47 163b-32"));
-        Tendero tend=new Tendero(2085, "Julio Serrano",s); 
-        repositorioTenderos.save(tend);
-        
-        /*Asignacion de tienda a tendero
-        Set<Tienda> s1=new LinkedHashSet<>();
-        s1.add(td1);
-        Tendero tend1=new Tendero(2088, "David Salsedo");
-        tend.setTiendas(s1);
-        repositorioTenderos.save(tend1);
-        */
-        
-
-    }
-    
-    
+   
 
 }

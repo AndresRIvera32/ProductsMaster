@@ -4,9 +4,12 @@ package com.cosw.productsmaster.persistencia;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -30,6 +33,11 @@ public class Factura  implements java.io.Serializable {
        this.idFacturas = idFacturas;
        this.valor = valor;
     }
+    public Factura(int idFacturas, long valor,Pedido p) {
+       this.idFacturas = idFacturas;
+       this.valor = valor;
+       this.pedido=p;
+    }
    
     @Id    
     @Column(name="idFacturas", unique=true, nullable=false)
@@ -50,7 +58,9 @@ public class Factura  implements java.io.Serializable {
         this.valor = valor;
     }
 
-    @Column(name="Pedidos_idPedidos", nullable=false)
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Pedidos_idPedidos")
     public Pedido getPedido() {
         return pedido;
     }

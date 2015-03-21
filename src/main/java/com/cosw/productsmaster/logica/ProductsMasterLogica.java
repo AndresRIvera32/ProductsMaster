@@ -259,7 +259,6 @@ public class ProductsMasterLogica {
     public void crearNuevoTendero(Tendero t) {
        repositorioTenderos.save(t);
     }
-    
     /**
      * @author Andres
      * Consultar si un pedido pertenece a un tendero

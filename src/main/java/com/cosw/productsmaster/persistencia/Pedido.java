@@ -90,7 +90,7 @@ public class Pedido  implements java.io.Serializable {
         this.valorTotal = valorTotal;
     }
     
-    @OneToMany(fetch=FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "Pedidos_idPedidos")
     public Set<DetalleCompra> getDetalleCompras() {
         return this.detalleCompras;

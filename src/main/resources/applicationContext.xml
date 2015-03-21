@@ -17,13 +17,19 @@
     
     <context:component-scan base-package="com.cosw.productsmaster.rep"/>
     
+    <context:component-scan base-package="com.cosw.productsmaster.rest"/>
+    
+    <context:component-scan base-package="com.cosw.productsmaster.restcontrollers"/>
+    
+    <context:component-scan base-package="com.cosw.productsmaster.persistencia"/>
+    
     <jpa:repositories base-package="com.cosw.productsmaster.rep"/>
     
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/coswg3?zeroDateTimeBehavior=convertToNull"/>
-        <property name="username" value="coswg3"/>
-        <property name="password" value="coswg30215"/>
+        <property name="url" value="jdbc:mysql://desarrollo.is.escuelaing.edu.co:3306/cosw2085314?zeroDateTimeBehavior=convertToNull"/>
+        <property name="username" value="cosw2085314"/>
+        <property name="password" value="2085314"/>
     </bean>
  
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">

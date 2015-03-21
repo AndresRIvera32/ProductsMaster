@@ -29,31 +29,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RestController
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class ControladorPeticiones {
-    private ProductsMasterLogica pm; 
     
+    @Autowired ProductsMasterLogica cl;
     
-    @Autowired
-    public void setFachadaOperaciones(ProductsMasterLogica pm){
-        this.pm = pm;        
-    }
+   
     
-     /*@RequestMapping("/productos")
-    public ArrayList<Producto> ProductosJson() {
+     @RequestMapping(value="producto/{id}",method = RequestMethod.GET)
+     public Producto consprod(@PathVariable int id) {
+         if(cl.ConsultaProducto(id)!=null){
+             return cl.ConsultaProducto(id);
+         }
+     return null; 
+     }
+     
+     @RequestMapping("/productos")
+    public ArrayList<Producto> productosJson() {
         ArrayList<Producto> lista = null;
         try {
-            lista =  (ArrayList<Producto>) pm.cargarTodosLosProductos();
+            lista = (ArrayList<Producto>) cl.cargarTodosLosProductos();
        } catch (PersistenceException ex) {
            Logger.getLogger(ControladorPeticiones.class.getName()).log(Level.SEVERE, null, ex);
        }
         return lista;
-    }*/
-    /*
-    @RequestMapping(value="/Productos",method = RequestMethod.GET)
-     public Producto consped(@PathVariable int id) {
-         if(pm.cargarTodosLosProductos()!=null){
-             return pm.cargarTodosLosProductos();
-         }
-     return null; 
-     }*/
+    }
+    
+    @RequestMapping("/ProveedorProd/{id}")
+    public ArrayList<Producto> ProveedorProdJson(@PathVariable int id) {
+        ArrayList<Producto> lista = null;
+        try {
+            lista = (ArrayList<Producto>) cl.cargarProductosPorProveedor(id);
+       } catch (PersistenceException ex) {
+           Logger.getLogger(ControladorPeticiones.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        return lista;
+    }
+    
+    @RequestMapping("/ProdsCategoria/{id}")
+    public ArrayList<Producto> ProductosCategoria(@PathVariable int id) {
+        ArrayList<Producto> lista = null;
+        try {
+            lista = (ArrayList<Producto>) cl.cargarProductosPorCategoria(id);
+       } catch (PersistenceException ex) {
+           Logger.getLogger(ControladorPeticiones.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        return lista;
+    }
     
 }

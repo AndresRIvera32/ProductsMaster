@@ -198,6 +198,10 @@ public class ProductsMasterLogica {
         return envio.getIdEnvio();
     }
     
+    public Producto ConsultaProducto(int id){
+        return repositorioProductos.findOne(id);
+    }
+    
     /**
      * @Author Andres
      * Actualiza el estado del envio

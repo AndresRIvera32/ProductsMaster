@@ -270,12 +270,14 @@ public class ProductsMasterLogica {
     /**
      * @author Andres
      * Consultar si un pedido pertenece a un tendero
-     * @param t Tienda
-     * @param p Pedido
+     * @param t idTienda
+     * @param p idPedido
      * @return boolean
      */
-    public boolean VerificarPedidoTendero(Tienda t,Pedido p){
-        Factura f=repositorioFacturas.VerificarPedidodeTienda(p, t);
+    public boolean VerificarPedidoTendero(int t,int p){
+        Tienda t1=repositorioTiendas.findOne(t);
+        Pedido p1=repositorioPedidos.findOne(p);
+        Factura f=repositorioFacturas.VerificarPedidodeTienda(p1, t1);
         if(f!=null){
             return true;
         }

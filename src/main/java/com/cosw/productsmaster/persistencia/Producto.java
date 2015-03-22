@@ -111,7 +111,7 @@ public class Producto  implements java.io.Serializable {
         this.metaDatos = metaDatoses;
     }
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Proveedores_idProveedores", nullable=false)
     public Proveedor getProveedores() {
         return this.proveedor;

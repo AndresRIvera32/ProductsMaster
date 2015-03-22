@@ -208,11 +208,8 @@ public class ProductsMasterTest_1 {
         
         Tienda t=repositorioTiendas.findOne(41);
         repositorioFacturas.save(new Factura(1, 8, ped,t));
-        
-        Pedido p=repositorioPedidos.findOne(1);
-        Factura f=repositorioFacturas.findOne(1);
-        
-        boolean b=superStuff.VerificarPedidoTendero(t, p);
+               
+        boolean b=superStuff.VerificarPedidoTendero(41, 1);
          assertEquals("la tienda con id=41 corresponde al pedido con id=1", true,b );        
         
         

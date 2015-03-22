@@ -14,9 +14,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -92,6 +95,20 @@ public class ControladorPeticiones {
        }
         return lista;
     }
+    /**
+     * 
+     * @param id idPedido
+     * @param id2 idTienda
+     * @return respuesta si corresponde o no corresponde el pedido a la tienda
+     */
+    @RequestMapping(value="pedidofac/{id}/tiendafac/{id2}",method = RequestMethod.GET)
+     public String PedidoTienda(@PathVariable int id,@PathVariable int id2) {
+         if(cl.VerificarPedidoTendero(id2,id)){
+             return "El Pedido: "+id+" Corresponde a la tienda: "+id2;
+         }
+     return "El Pedido: "+id+" No Corresponde a la tienda: "+id2;
+     }
+    
     
     
     

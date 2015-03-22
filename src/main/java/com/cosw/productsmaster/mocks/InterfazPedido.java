@@ -17,5 +17,5 @@ public interface InterfazPedido {
      * @param Pedido
      * @return Codigo del envio del pedido
      */
-    public int RegistrarPedido(int EmpresaEnvio,int Pedido);
+    public int GenerarPedido(int EmpresaEnvio,int Pedido);
 }

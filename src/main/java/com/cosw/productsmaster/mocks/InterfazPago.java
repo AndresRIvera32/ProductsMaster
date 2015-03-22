@@ -15,7 +15,8 @@ public interface InterfazPago {
      * 
      * @param EntidadFinanciera
      * @param valor
+     * @param NumCuenta
      * @return devuelve el numero de factura del pago
      */
-    public int Pago(int EntidadFinanciera,long valor);
+    public int Pago(int EntidadFinanciera,long valor,int NumCuenta);
 }

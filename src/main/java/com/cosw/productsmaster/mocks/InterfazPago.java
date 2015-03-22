@@ -11,5 +11,11 @@ package com.cosw.productsmaster.mocks;
  */
 public interface InterfazPago {
     
+    /**
+     * 
+     * @param EntidadFinanciera
+     * @param valor
+     * @return devuelve el numero de factura del pago
+     */
     public int Pago(int EntidadFinanciera,long valor);
 }

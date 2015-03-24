@@ -9,7 +9,7 @@
         <script type="text/javascript">
             function consulta(){
                 var num=document.getElementById("texto").value;
-                $.getJSON("http://evening-bastion-5152.herokuapp.com/rest/producto/"+num,
+                $.getJSON("http://http://localhost:8080/ProductsMaster/rest/producto/"+num,
                 function(data){  
                     $("#textoNombre").val(data.descripcion);
                     $("#textoCosto").val(data.precioLista);
@@ -21,12 +21,18 @@
     <body>
         <h1>Hello to ProductsMaster!</h1>
         
-        <h1>Digite el codigo del producto a consultar:</h1></br>
-        <input type="text" value="" id="texto"/>
-        <input type="button" value="consultar" onclick="consulta()"/>
-        <input type="text" value="" id="textoNombre">
-        <input type="text" value="" id="textoCosto">
+        <h1>Digite el codigo del producto a consultar:</h1><br>
         
+        
+         <input type="text" value="" id="texto"/><p>
+        <input type="button" value="consultar" onclick="consulta()"/>
+        <p>
+        <output>nombre: </output>
+        <output type="text" value="nombre" id="textoNombre"></output>
+        <p>
+        <output>Precio: </output>
+        <output type="text" value="" id="textoCosto"></output>
+
         
     </body>
 </html>

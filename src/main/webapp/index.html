@@ -9,7 +9,7 @@
         <script type="text/javascript">
             function consulta(){
                 var num=document.getElementById("texto").value;
-                $.getJSON("http://http://localhost:8080/ProductsMaster/rest/producto/"+num,
+                $.getJSON("http://localhost:8080/ProductsMaster/rest/producto/"+num,
                 function(data){  
                     $("#textoNombre").val(data.descripcion);
                     $("#textoCosto").val(data.precioLista);

@@ -3,8 +3,30 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function consulta(){
+                var num=document.getElementById("texto").value;
+                $.getJSON("http://localhost:8080/ProductsMaster/rest/producto/"+num,
+                function(data){  
+                    $("#textoNombre").val(data.descripcion);
+                    $("#textoCosto").val(data.precioLista);
+                });
+            }
+        </script>        
+        
     </head>
     <body>
         <h1>Hello to ProductsMaster!</h1>
+        
+        <h1>Digite el codigo del producto a consultar:</h1></br>
+        <input type="text" value="" id="texto"/>
+        <input type="button" value="consultar" onclick="consulta()"/>
+        <input type="text" value="" id="textoNombre">
+        <input type="text" value="" id="textoCosto">
+        
+        
     </body>
 </html>

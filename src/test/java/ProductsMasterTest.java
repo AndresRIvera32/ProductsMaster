@@ -53,7 +53,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 
 /**
  *
- * @author HOMERO
+ * @author Andres
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @TransactionConfiguration(defaultRollback = true)

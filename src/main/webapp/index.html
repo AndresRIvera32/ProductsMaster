@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Title      : Harvest
+Version    : 1.0
+Released   : 20081106
+Description: A two-column, fixed-width and lightweight template ideal for 1024x768 resolutions. Suitable for blogs and small websites.
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ProductsMaster</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="default.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
         <script type="text/javascript">
             function consulta(){
                 var num=document.getElementById("texto").value;
@@ -16,23 +30,98 @@
                 });
             }
         </script>        
-        
-    </head>
-    <body>
-        <h1>Hello to ProductsMaster!</h1>
-        
-        <h1>Digite el codigo del producto a consultar:</h1><br>
-        
-        
-         <input type="text" value="" id="texto"/><p>
-        <input type="button" value="consultar" onclick="consulta()"/>
-        <p>
-        <output>nombre: </output>
-        <output type="text" value="nombre" id="textoNombre"></output>
-        <p>
-        <output>Precio: </output>
-        <output type="text" value="" id="textoCosto"></output>
 
-        
-    </body>
+</head>
+<body>
+
+<div id="logo-wrap">
+<div id="logo">
+	<h1><a href="#">Products Master </a></h1>
+	<h2> Design by Andres Rivera</h2>
+</div>
+</div>
+
+<!-- start header -->
+<div id="header">
+	<div id="menu">
+		<ul>
+			<li class="current_page_item"><a href="#">Homepage</a></li>
+			<li><a href="#">Log in</a></li>
+			<li><a href="#">Productos</a></li>
+			<li><a href="#">About</a></li>
+			<li class="last"><a href="#">Contact</a></li>
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<div id="wrapper">
+<div id="wrapper-btm">
+<div id="page">
+	<!-- start content -->
+	<div id="content">
+		<div id="banner">&nbsp;</div>
+		<div class="post">
+			<h1 class="title">Bienvenido a ProductsMaster </h1>
+			<div class="entry">
+				<p><img src="imagenes/img06.jpg" alt="" width="140" height="125" class="left" />Somos la mayor plataforma de comercio electrónico en Latinoamérica. Nacimos en 2015  sitio en el que implementamos un sencillo pero eficaz modelo de negocios, que rompió el paradigma de caducidad de los avisos clasificados en medios tradicionales. Hoy somos el mayor grupo de medios dedicado a la publicación de fotoclasificados en toda Latinoamérica.</p>
+			</div>
+			<div class="meta">
+				<p class="byline">Posted on July 21, 2012 </p>
+				<p class="links"><a href="#" class="more">Read full article</a> <b>|</b> <a href="#" class="comments">Comments (32)</a></p>
+			</div>
+		</div>
+		
+	</div>
+	<!-- end content -->
+	<!-- start sidebar -->
+	<div id="sidebar">
+		<ul>
+			<li id="search">
+				<h2>Busqueda rapida de productos:</h2>
+				<form method="get" action="">
+					<fieldset>
+					<input type="text" id="texto" value="" />
+					<input type="button" value="consultar" onclick="consulta()"/>
+					</fieldset>
+				</form>
+                                
+                                
+                                <output>nombre: </output>
+                                <output type="text" value="nombre" id="textoNombre"></output>
+                                <p>
+                                <output>Precio: </output>
+                                <output type="text" value="" id="textoCosto"></output>
+                                
+			</li>
+			<li>
+				<h2>Escoge tu opcion:</h2>
+                        
+                                <p>
+                                <br>
+				<ul>
+					<li><a href="#">- Productos</a></li>
+					<li><a href="#">- Hacer Pedido</a></li>
+					<li><a href="#">- Proveedores</a></li>
+					
+				</ul>
+			</li>
+			
+			
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+</div>
+</div>
+<!-- start footer -->
+<div id="footer">
+	<div id="footer-wrap">
+	<p id="legal">(c) 2015 ProductsMaster. Design by AndresRivera.</p>
+	</div>
+</div>
+<!-- end footer -->
+</body>
 </html>

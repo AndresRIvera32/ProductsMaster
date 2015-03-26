@@ -9,6 +9,7 @@ import com.cosw.productsmaster.logica.ProductsMasterLogica;
 import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Producto;
 import com.cosw.productsmaster.persistencia.Tendero;
+import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -103,12 +104,14 @@ public class ControladorPeticiones {
      * @return respuesta si corresponde o no corresponde el pedido a la tienda
      */
     @RequestMapping(value="pedidofac/{id}/tiendafac/{id2}",method = RequestMethod.GET)
-     public Factura PedidoTienda(@PathVariable int id,@PathVariable int id2) {
+     public String PedidoTienda(@PathVariable int id,@PathVariable int id2) {
+         String json;
          if(cl.VerificarPedidoTendero(id2,id)!=null){
-             return cl.VerificarPedidoTendero(id2,id);
              
+        return json = "{\"Tienda\":"+id2+",\"Pedido\":"+id+"}";           
          }
-     return null;
+         return json = "{\"Tienda\":\"\",\"Pedido\":\"\"}";          
+
      }
     
     

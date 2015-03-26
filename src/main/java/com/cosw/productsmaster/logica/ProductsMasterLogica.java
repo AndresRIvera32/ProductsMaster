@@ -274,13 +274,13 @@ public class ProductsMasterLogica {
      * @param p idPedido
      * @return boolean
      */
-    public boolean VerificarPedidoTendero(int t,int p){
+    public Factura VerificarPedidoTendero(int t,int p){
         Tienda t1=repositorioTiendas.findOne(t);
         Pedido p1=repositorioPedidos.findOne(p);
         Factura f=repositorioFacturas.VerificarPedidodeTienda(p1, t1);
         if(f!=null){
-            return true;
+            return f;
         }
-        return false;
+        return null;
     }
 }

@@ -6,6 +6,7 @@
 package com.cosw.productsmaster.rest;
 
 import com.cosw.productsmaster.logica.ProductsMasterLogica;
+import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Producto;
 import com.cosw.productsmaster.persistencia.Tendero;
 import java.util.ArrayList;
@@ -102,15 +103,13 @@ public class ControladorPeticiones {
      * @return respuesta si corresponde o no corresponde el pedido a la tienda
      */
     @RequestMapping(value="pedidofac/{id}/tiendafac/{id2}",method = RequestMethod.GET)
-     public String PedidoTienda(@PathVariable int id,@PathVariable int id2) {
-         if(cl.VerificarPedidoTendero(id2,id)){
-             return "El Pedido: "+id+" Corresponde a la tienda: "+id2;
+     public Factura PedidoTienda(@PathVariable int id,@PathVariable int id2) {
+         if(cl.VerificarPedidoTendero(id2,id)!=null){
+             return cl.VerificarPedidoTendero(id2,id);
+             
          }
-     return "El Pedido: "+id+" No Corresponde a la tienda: "+id2;
+     return null;
      }
-    
-    
-    
     
     
 }

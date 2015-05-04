@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="modonex">
+<head>
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.js"></script>
+        <script src="js/libs/appmodule.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">   
+        
+       
+
+<link href="default.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+<div id="logo-wrap">
+<div id="logo">
+	<h1><a href="#">Products Master </a></h1>
+	<h2> Design by Andres Rivera</h2>
+</div>
+</div>
+
+<!-- start header -->
+<div id="header">
+	<div id="menu">
+		<ul>
+			<li ><a href="index.html">Homepage</a></li>
+			<li><a href="#">Log in</a></li>
+			<li class="current_page_item"><a href="productos.html">Productos</a></li>
+			<li><a href="#">About</a></li>
+			<li class="last"><a href="#">Contact</a></li>
+		</ul>
+	</div>
+</div>
+<!-- end header -->
+<!-- start page -->
+<div id="wrapper">
+<div id="wrapper-btm">
+<div id="page">
+	<!-- start content -->
+	
+        
+	<!-- end content -->
+	<!-- start sidebar -->
+	<br>
+        <div  ng-controller="ConsultaCatalogo as cr">
+		
+            <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Identificador</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                <tr ng-repeat="x in productos">
+                    <td> {{ x.idProductos }}</td>
+                    <td> {{ x.descripcion }}</td>
+                    <td> {{ x.precioLista }}</td>
+                </tr>
+            </tbody>
+        </table>
+       <button type="button" class="btn btn-info" ng-click="cr.consultar()">button</button> 
+            
+	</div>
+        
+	<!-- end sidebar -->
+	<div style="clear: both;">&nbsp;</div>
+</div>
+<!-- end page -->
+</div>
+</div>
+<!-- start footer -->
+<div id="footer">
+	<div id="footer-wrap">
+	<p id="legal">(c) 2015 ProductsMaster. Design by AndresRivera.</p>
+	</div>
+</div>
+<!-- end footer -->
+<div id="main">
+
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+            <div ng-view></div>
+
+        </div>
+
+</body>
+</html>

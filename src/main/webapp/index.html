@@ -1,35 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<!--
-
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
-
-Title      : Harvest
-Version    : 1.0
-Released   : 20081106
-Description: A two-column, fixed-width and lightweight template ideal for 1024x768 resolutions. Suitable for blogs and small websites.
-
--->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="modonex">
 <head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>ProductsMaster</title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<link href="default.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="js/libs/angular.min.js"></script>
+        <script src="js/libs/angular-route.js"></script>
+        <script src="js/libs/appmodule.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">   
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script type="text/javascript">
-            function consulta(){
-                var num=document.getElementById("texto").value;
-                $.getJSON("http://localhost:8080/ProductsMaster/rest/producto/"+num,
-                function(data){  
-                    $("#textoNombre").val(data.descripcion);
-                    $("#textoCosto").val(data.precioLista);
-                });
-            }
-        </script>        
+<title>ProductsMaster</title>
+<link href="default.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -47,7 +26,7 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 		<ul>
 			<li class="current_page_item"><a href="#">Homepage</a></li>
 			<li><a href="#">Log in</a></li>
-			<li><a href="#">Productos</a></li>
+			<li><a href="productos.html">Productos</a></li>
 			<li><a href="#">About</a></li>
 			<li class="last"><a href="#">Contact</a></li>
 		</ul>
@@ -73,25 +52,26 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 		</div>
 		
 	</div>
+        
 	<!-- end content -->
 	<!-- start sidebar -->
-	<div id="sidebar">
-		<ul>
+	<div id="sidebar"  ng-controller="ConsultaProducto as cr">	
+            <ul>
 			<li id="search">
 				<h2>Busqueda rapida de productos:</h2>
-				<form method="get" action="">
-					<fieldset>
-					<input type="text" id="texto" value="" />
-					<input type="button" value="consultar" onclick="consulta()"/>
-					</fieldset>
+				<form>
+					
+					<input type="text" ng-model="idproductos" />
+					<button type="button" class="btn btn-info" ng-click="cr.consultar()">Consultar</button>
+			
 				</form>
                                 
                                 
-                                <output>nombre: </output>
-                                <output type="text" value="nombre" id="textoNombre"></output>
+                                nombre: {{descripcion}}
+                                <br>
+                                Precio: {{precioLista}}
                                 <p>
-                                <output>Precio: </output>
-                                <output type="text" value="" id="textoCosto"></output>
+                                
                                 
 			</li>
 			<li>
@@ -107,9 +87,10 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 				</ul>
 			</li>
 			
-			
 		</ul>
+            
 	</div>
+        
 	<!-- end sidebar -->
 	<div style="clear: both;">&nbsp;</div>
 </div>
@@ -123,5 +104,13 @@ Description: A two-column, fixed-width and lightweight template ideal for 1024x7
 	</div>
 </div>
 <!-- end footer -->
+<div id="main">
+
+            <!-- angular templating -->
+            <!-- this is where content will be injected -->
+            <div ng-view></div>
+
+        </div>
+
 </body>
 </html>

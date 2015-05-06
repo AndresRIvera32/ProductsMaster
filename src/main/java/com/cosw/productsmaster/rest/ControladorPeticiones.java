@@ -8,6 +8,7 @@ package com.cosw.productsmaster.rest;
 import com.cosw.productsmaster.logica.ProductsMasterLogica;
 import com.cosw.productsmaster.persistencia.Factura;
 import com.cosw.productsmaster.persistencia.Producto;
+import com.cosw.productsmaster.persistencia.Proveedor;
 import com.cosw.productsmaster.persistencia.Tendero;
 import com.google.gson.JsonObject;
 import java.util.ArrayList;
@@ -67,6 +68,21 @@ public class ControladorPeticiones {
     }
     
     /**
+     * 
+     * @return 
+     */
+    @RequestMapping("/proveedor")
+    public ArrayList<Proveedor> proveedoresJson() {
+        ArrayList<Proveedor> lista = null;
+        try {
+            lista = (ArrayList<Proveedor>) cl.cargarTodosLosProveedores();
+       } catch (PersistenceException ex) {
+           Logger.getLogger(ControladorPeticiones.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        return lista;
+    }
+    
+    /**
      * Metodo para retornar los productos de un proveedor
      * @param id
      * @return productos de proveedor
@@ -81,6 +97,8 @@ public class ControladorPeticiones {
        }
         return lista;
     }
+    
+    
     
     /**
      * Metodo para retonar productos de una categoria

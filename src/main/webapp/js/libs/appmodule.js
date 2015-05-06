@@ -83,6 +83,54 @@
                     }; 
             } 
      );
+  /*------------------------------------------------------------------------*/
+  app.controller('ConsultaProveedor', 
+             function($scope, $http) {
+                 
+     
+                    $scope.proveedor=[];
+            this.consultar=function(){        
+                    $http.get('rest/proveedor')
+                       .success(function (response) {
+                           $scope.proveedor = response;
+                           console.log("RESPUESTA:"+response);
+                        }).
+                       error(function(data, status, headers, config) {
+                         
+                           //console.log("ERROR:"+status);
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+  
+                       
+                        });
+                    }; 
+            } 
+     );
+   /*---------------------------------------------------------------------------*/
+   app.controller('ConsultaProdProveedor', 
+             function($scope, $http) {
+                 
+     
+                    $scope.idproveedor=1;
+                    $scope.productos=[];
+            this.consultar=function(){        
+                    $http.get('rest/ProveedorProd/'+$scope.idproveedor)
+                       .success(function (response) {
+                           $scope.productos = response;
+                           console.log("RESPUESTA:"+response);
+                        }).
+                       error(function(data, status, headers, config) {
+                         
+                           //console.log("ERROR:"+status);
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+  
+                       
+                        });
+                    }; 
+            } 
+     );
+    
 })();
 
 

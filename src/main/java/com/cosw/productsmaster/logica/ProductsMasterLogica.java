@@ -120,7 +120,14 @@ public class ProductsMasterLogica {
     public List<Producto> cargarTodosLosProductos(){
         return (List<Producto>) repositorioProductos.findAll();
     }
-    
+    /**
+     * @author Andres
+     * Trae la lista de todos los proveedores existentes
+     * @return La lista de los proveedores
+     */
+    public List<Proveedor> cargarTodosLosProveedores(){
+        return (List<Proveedor>) repositorioProveedores.findAll();
+    }
     /**
      * @author Holmer
      * Trae el producto correspondiente al id del proveedor
@@ -254,11 +261,6 @@ public class ProductsMasterLogica {
         Tendero t = new Tendero(idTendero, nombre);
         repositorioTenderos.save(t);
     }
-    
-    public List<Proveedor> cargarTodosLosProveedores(){
-        return (List<Proveedor>) repositorioProveedores.findAll();
-    }
-
     /**
      * @Author Holmer
      * Crea un nuevo tendero

@@ -25,8 +25,8 @@
 		<ul>
 			<li ><a href="index.html">Homepage</a></li>
 			<li><a href="#">Log in</a></li>
-			<li class="current_page_item"><a href="productos.html">Productos</a></li>
-			<li><a href="proveedores.html">Proveedores</a></li>
+			<li ><a href="productos.html">Productos</a></li>
+			<li class="current_page_item"><a href="#">Proveedores</a></li>
 			<li class="last"><a href="#">About</a></li>
 		</ul>
 	</div>
@@ -45,8 +45,30 @@
 	<!-- end content -->
 	<!-- start sidebar -->
 	<br>
-        <div  ng-controller="ConsultaCatalogo as cr">
-            <h1> Productos  </h1>
+        <div id="sidebar" ng-controller="ConsultaProveedor as prv">
+            <h1> Proveedores  </h1>
+            <br>
+            <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Empresa</th>
+                </tr>
+            </thead>    
+            <tbody>
+                
+                <tr ng-repeat="x in proveedor">
+                    <td> {{ x.idProveedores }}</td>
+                    <td> {{ x.razonSocial }}</td>
+                </tr>
+            </tbody>
+        </table>
+       <button type="button" class="btn btn-info" ng-click="prv.consultar()">button</button> 
+            
+	</div>
+        
+            <div id="sidebar" ng-controller="ConsultaProdProveedor as prvd">
+            <h1> Productos de proveedor  </h1>
             <br>
             <table class="table table-condensed">
             <thead>
@@ -55,8 +77,7 @@
                     <th>Nombre</th>
                     <th>Precio</th>
                 </tr>
-            </thead>
-
+            </thead>    
             <tbody>
                 
                 <tr ng-repeat="x in productos">
@@ -66,7 +87,10 @@
                 </tr>
             </tbody>
         </table>
-       <button type="button" class="btn btn-info" ng-click="cr.consultar()">button</button> 
+       id Empresa: <input type="text" ng-model="idproveedor" />
+       <br>
+       <br>    
+       <button type="button" class="btn btn-info" ng-click="prvd.consultar()">button</button> 
             
 	</div>
         

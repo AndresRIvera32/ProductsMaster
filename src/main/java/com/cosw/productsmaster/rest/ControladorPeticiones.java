@@ -19,6 +19,7 @@ import javax.persistence.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -72,6 +73,7 @@ public class ControladorPeticiones {
      * @return 
      */
     @RequestMapping("/proveedor")
+    @PreAuthorize("#oauth2.isUser() and #oauth2.clientHasRole('ROLE_XXXUSER') and #oauth2.hasScope('read')")
     public ArrayList<Proveedor> proveedoresJson() {
         ArrayList<Proveedor> lista = null;
         try {
